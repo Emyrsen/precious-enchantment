@@ -1,6 +1,8 @@
 package com.github.emyrsen.precious_tools.mixin;
 
+import com.github.emyrsen.precious_tools.PreciousToolsMod;
 import com.github.emyrsen.precious_tools.Registries;
+import com.github.emyrsen.precious_tools.config.PreciousToolsConfig;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -25,23 +27,51 @@ public abstract class PreciousMixin {
 
 	@Shadow
 	public ClientPlayerEntity player;
-  
-  /** Does the item stack have the enchantment? */
-  private static boolean hasEnchantment(ItemStack iStack) {
-    return EnchantmentHelper.getLevel(Registries.PRECIOUS, iStack) > 0;
-  }
 
-  /** Should use of the item stack be prevented? */
-  private static boolean doPreventUsage(ItemStack iStack) {
-    if (!iStack.isDamageable()) return false;
-    if (!hasEnchantment(iStack)) return false;
-    
-    int remainingDurability = iStack.getMaxDamage() - iStack.getDamage();
-    if (remainingDurability > 1) return false;
+	/** Determine if the item has the enchantment. */
+	private static boolean hasEnchantment(ItemStack iStack) {
+		return EnchantmentHelper.getLevel(Registries.PRECIOUS, iStack) > 0;
+	}
 
-    return true;
-  }
-  
+	/** Determine the durability below which to prevent usage. */
+	private static int getTriggerDurability(ItemStack iStack) {
+		PreciousToolsConfig config = PreciousToolsMod.getConfig();
+
+		PreciousToolsMod.LOGGER.info("MFD: " + config.minimumFlatDurability);
+		PreciousToolsMod.LOGGER.info("MPD: " + config.minimumPercentageDurability);
+
+		if (config.minimumFlatDurability <= 0 && config.minimumPercentageDurability <= 0)
+			return 0;
+
+		int triggerDurability = Integer.MAX_VALUE;
+		if (config.minimumFlatDurability > 0) {
+			triggerDurability = Math.min(triggerDurability, config.minimumFlatDurability);
+		}
+		if (config.minimumPercentageDurability > 0) {
+			triggerDurability = Math.min(triggerDurability,
+					(config.minimumPercentageDurability * iStack.getMaxDamage()) / 100);
+		}
+
+		PreciousToolsMod.LOGGER.info("TD: " + triggerDurability);
+
+		return triggerDurability;
+	}
+
+	/** Determine if usage of the item should be prevented. */
+	private static boolean doPreventUsage(ItemStack iStack) {
+		if (!iStack.isDamageable())
+			return false;
+		if (!hasEnchantment(iStack))
+			return false;
+
+		int remainingDurability = iStack.getMaxDamage() - iStack.getDamage();
+
+		if (remainingDurability > getTriggerDurability(iStack))
+			return false;
+
+		return true;
+	}
+
 	@Inject(method = "handleBlockBreaking(Z)V", at = @At("HEAD"), cancellable = true)
 	public void onHandleBlockBreaking(boolean isBreakPressed, CallbackInfo info) {
 		if (isBreakPressed && doPreventUsage(player.getInventory().getMainHandStack())) {

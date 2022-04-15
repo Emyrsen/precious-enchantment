@@ -1,4 +1,18 @@
 {
   "enchantment.precious_tools.precious": "Precious",
-  "enchantment.precious_tools.precious.desc": "Prevents an item from being used past the breaking point."
+  "enchantment.precious_tools.precious.desc": "Prevents an item from being used past the breaking point.",
+
+  "text.autoconfig.precious_tools.title": "Precious Tools Config",
+  "category.precious_tools": "Precious Tools",
+
+  "text.autoconfig.precious_tools.option.minimumFlatDurability": "Flat Durability",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[0]": "If a tool has less than",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[1]": "this durability remaining,",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[2]": "usage will be prevented.",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[3]": "If zero, it will have no effect.",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability": "Percentage Durability",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[0]": "If a tool has less than",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[1]": "this durability percentage remaining,",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[2]": "usage will be prevented.",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[3]": "If zero, it will have no effect."
 }

@@ -15,7 +15,8 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": ["com.github.emyrsen.precious_tools.PreciousToolsMod"]
+    "main": ["com.github.emyrsen.precious_tools.PreciousToolsMod"],
+    "modmenu": ["com.github.emyrsen.precious_tools.compat.PreciousToolsModMenu"]
   },
   "mixins": ["precious_tools.mixins.json"],
 
