@@ -80,7 +80,7 @@ public abstract class PreciousMixin {
 		}
 	}
 
-	@Inject(method = "doAttack()Z", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "doAttack()V", at = @At("HEAD"), cancellable = true)
 	public void onDoAttack(CallbackInfo info) {
 		if (doPreventUsage(player.getInventory().getMainHandStack())) {
 			info.cancel();
