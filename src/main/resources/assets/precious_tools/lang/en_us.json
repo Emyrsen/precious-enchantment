@@ -10,9 +10,13 @@
   "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[1]": "this durability remaining,",
   "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[2]": "usage will be prevented.",
   "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[3]": "If zero, it will have no effect.",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[4]": "When used with Percentage Durability,",
+  "text.autoconfig.precious_tools.option.minimumFlatDurability.@Tooltip[5]": "the maximum of the two will take effect.",
   "text.autoconfig.precious_tools.option.minimumPercentageDurability": "Percentage Durability",
   "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[0]": "If a tool has less than",
   "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[1]": "this durability percentage remaining,",
   "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[2]": "usage will be prevented.",
-  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[3]": "If zero, it will have no effect."
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[3]": "If zero, it will have no effect.",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[4]": "When used with Percentage Durability,",
+  "text.autoconfig.precious_tools.option.minimumPercentageDurability.@Tooltip[5]": "the maximum of the two will take effect."
 }

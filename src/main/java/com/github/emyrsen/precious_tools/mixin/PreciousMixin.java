@@ -43,12 +43,12 @@ public abstract class PreciousMixin {
 		if (config.minimumFlatDurability <= 0 && config.minimumPercentageDurability <= 0)
 			return 0;
 
-		int triggerDurability = Integer.MAX_VALUE;
+		int triggerDurability = 1;
 		if (config.minimumFlatDurability > 0) {
-			triggerDurability = Math.min(triggerDurability, config.minimumFlatDurability);
+			triggerDurability = Math.max(triggerDurability, config.minimumFlatDurability);
 		}
 		if (config.minimumPercentageDurability > 0) {
-			triggerDurability = Math.min(triggerDurability,
+			triggerDurability = Math.max(triggerDurability,
 					(config.minimumPercentageDurability * iStack.getMaxDamage()) / 100);
 		}
 
