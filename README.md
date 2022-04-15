@@ -1,8 +1,7 @@
-# Fabric Example Mod
+# Precious Enchantment
 
-## Setup
-
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+This Minecraft Fabric mod currently provides a single enchantment:
+- **Precious**: Applicable to tools, this enchantment prevents the item from breaking by preventing the item from being used when it runs out of durability.
 
 ## License
 
