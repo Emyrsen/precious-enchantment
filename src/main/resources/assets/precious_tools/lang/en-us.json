@@ -1,4 +1,4 @@
 {
-  "enchantment.previous_tools.precious": "Precious",
-  "enchantment.previous_tools.precious.desc": "Prevents an item from being used past the breaking point."
+  "enchantment.precious_tools.precious": "Precious",
+  "enchantment.precious_tools.precious.desc": "Prevents an item from being used past the breaking point."
 }
